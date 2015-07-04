@@ -34,7 +34,7 @@ def download(data)
 
   content_length_proc = lambda { |t|
     if t && 0 < t
-      pbar = ProgressBar.new(dest, t)
+      pbar = ProgressBar.new("Downloading", t)
       pbar.file_transfer_mode
     end
   }
@@ -60,4 +60,5 @@ response  = Net::HTTP.get(uri)
 parsed    = CGI.parse(response)
 data      = extract(parsed)
 
+puts data[:title]
 download(data)
